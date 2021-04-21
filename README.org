@@ -1,5 +1,12 @@
-#+TITLE: Foosimulation
 #+OPTIONS: toc:1
+
+* Table of Contents :toc:
+- [[#requirements][Requirements]]
+- [[#steps][Steps]]
+  - [[#building-c-bindings][Building C++ bindings]]
+  - [[#compiling-the-plugin][Compiling the plugin]]
+- [[#project-structure][Project structure]]
+- [[#cleaning][Cleaning]]
 
 * Requirements
 - Godot v3.2.3-stable
