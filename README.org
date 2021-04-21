@@ -1,0 +1,48 @@
+#+TITLE: Foosimulation
+#+OPTIONS: toc:1
+
+* Requirements
+- Godot v3.2.3-stable
+- Scons
+
+* Steps
+** Building C++ bindings
+#+begin_src sh
+# N is the number of CPU threads to speed up compilation
+# Add `target=release` for release build
+# See `scons -h` for more
+cd godot-cpp
+scons platform=linux generate_bindings=yes -jN
+cd ..
+#+end_src
+
+** Compiling the plugin
+#+begin_src sh
+# Add `target=release` for release build
+# See `scons -h` for more
+mkdir -p foosim/bin/x11
+scons
+#+end_src
+
+* Project structure
+The structure should be similar to this at the end.
+
+#+begin_src sh
+├── build
+│   ├── debug
+│   └── release
+├── docs
+├── foosim
+│   └── bin
+│       └── x11
+├── godot-cpp
+│   └── godot-headers
+├── include
+└── src
+
+#+end_src
+* Cleaning
+#+begin_src sh
+# Add `target=release` to clean relase build
+scons --clean
+#+end_src
