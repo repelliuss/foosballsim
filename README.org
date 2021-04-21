@@ -1,5 +1,3 @@
-#+OPTIONS: toc:1
-
 * Table of Contents :toc:
 - [[#requirements][Requirements]]
 - [[#build-steps][Build Steps]]
@@ -15,11 +13,11 @@
 
 * Build Steps
 ** Example build (optional)
-#+begin_src sh
+#+begin_src sh :results output silent
 git checkout example
 #+end_src
 ** Building C++ bindings
-#+begin_src sh
+#+begin_src sh :results output silent
 # N is the number of CPU threads to speed up compilation
 # Add `target=release` for release build
 # See `scons -h` for more
@@ -29,12 +27,13 @@ cd ..
 #+end_src
 
 ** Compiling the plugin
-#+begin_src sh
+#+begin_src sh :results output silent
 # Add `target=release` for release build
 # See `scons -h` for more
 mkdir -p foosim/bin/x11
 scons
 #+end_src
+
 * Project structure
 The structure should be similar to this at the end.
 
@@ -53,7 +52,7 @@ The structure should be similar to this at the end.
 
 #+end_src
 * Cleaning
-#+begin_src sh
+#+begin_src sh :results output silent
 # Add `target=release` to clean relase build
 scons --clean
 #+end_src
