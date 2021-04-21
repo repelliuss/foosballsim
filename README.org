@@ -2,7 +2,8 @@
 
 * Table of Contents :toc:
 - [[#requirements][Requirements]]
-- [[#steps][Steps]]
+- [[#build-steps][Build Steps]]
+  - [[#example-build-optional][Example build (optional)]]
   - [[#building-c-bindings][Building C++ bindings]]
   - [[#compiling-the-plugin][Compiling the plugin]]
 - [[#project-structure][Project structure]]
@@ -12,7 +13,11 @@
 - Godot v3.2.3-stable
 - Scons
 
-* Steps
+* Build Steps
+** Example build (optional)
+#+begin_src sh
+git checkout example
+#+end_src
 ** Building C++ bindings
 #+begin_src sh
 # N is the number of CPU threads to speed up compilation
@@ -30,7 +35,6 @@ cd ..
 mkdir -p foosim/bin/x11
 scons
 #+end_src
-
 * Project structure
 The structure should be similar to this at the end.
 
