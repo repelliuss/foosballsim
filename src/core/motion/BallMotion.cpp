@@ -7,9 +7,14 @@ void BallMotion::_register_methods() {
   register_property<BallMotion, float>("speed", &BallMotion::speed, 3.0);
 }
 
-BallMotion::BallMotion()
-    : x_dispatcher{{3.4, -4.985, 13.54, -13.496, -6.861, -0.699}, speed, 0.2},
-      z_dispatcher{{4, -16.543, 0, 10.402, 16.122, -27.976}, speed, 0.2} {}
+BallMotion::BallMotion() noexcept
+    : dispatcher{{{{{3.4, 4}},
+                  {{-4.985, -16.543}},
+                  {{13.54, 0}},
+                  {{-13.496, 10.402}},
+                  {{-6.861, 16.122}},
+                  {{-0.699, -27.976}}}},
+                 speed, 0.2f} {}
 
 void BallMotion::_init() {
   speed = 3.0;
@@ -17,9 +22,7 @@ void BallMotion::_init() {
 }
 
 void BallMotion::_process(float delta) {
-
-  if (x_dispatcher.next_pos(transform.origin.x, delta) &&
-      z_dispatcher.next_pos(transform.origin.z, delta)) {
+  if (dispatcher.next_pos(transform.origin.x, transform.origin.z, delta)) {
     set_transform(transform);
   }
 }
