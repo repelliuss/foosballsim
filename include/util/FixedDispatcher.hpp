@@ -6,16 +6,16 @@
 
 using namespace std;
 
-namespace godot {
+namespace util {
 
 template <size_t Size> class FixedDispatcher {
 
 public:
   constexpr FixedDispatcher(const array<float, Size> &data, const float &speed,
-                            const float epsilon)
+                            const float epsilon) noexcept
       : data{data}, speed{speed}, epsilon{epsilon}, index{0} {}
 
-  bool next_pos(float &next, float deltatime) {
+  bool next_pos(float &next, float deltatime) noexcept {
     if (index >= Size) {
       return false;
     }
@@ -37,6 +37,6 @@ private:
   const float &speed;
   const float epsilon;
 };
-} // namespace godot
+} // namespace util
 
 #endif // FIXED_DISPATCHER_HPP_
