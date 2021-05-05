@@ -8,7 +8,7 @@ void R3Motion::_register_methods() {
 }
 
 R3Motion::R3Motion() noexcept
-    : ArmMotion({-1, 3.118, -3.67, 2.984, -1, 2.425}, speed, 0.025) {}
+    : ArmMotion({-1, 3.118, -3.67, 2.984, -1, 2.425}, speed, 0.05) {}
 
 void R3Motion::_init() noexcept {
   ArmMotion::_init();
