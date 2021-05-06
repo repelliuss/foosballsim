@@ -10,6 +10,10 @@
 * Requirements
 - Godot v3.2.3-stable
 - Scons
+- scons_compiledb
+  #+begin_src sh :results output silent
+pip install scons_compiledb
+  #+end_src
 
 * Build Steps
 ** Example build (optional)
