@@ -3,11 +3,15 @@
 *.log
 tmp/
 
+.import/
+*.translation
+export_presets.cfg
+.mono/
+
 .sconsign.dblite
 *.so
 *.o
 *.os
-
 
 .cache/
 .compile_commands.json
