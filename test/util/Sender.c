@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         score_human      = 5555;
         score_robot      = 6666;
         uint16_t raw_data[6];
-        create_raw_data(&raw_data);
+        create_raw_data(raw_data);
         int nbytes = sendto(fd,&raw_data,sizeof(raw_data),0,(struct sockaddr*) &addr, sizeof(addr));
         if (nbytes < 0) {
             perror("sendto");

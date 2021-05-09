@@ -126,7 +126,7 @@ int get_game_data()
 {
 
 	uint16_t data[6];
-    int addrlen = sizeof(addr);
+    socklen_t addrlen = sizeof(addr);
     int nbytes = recvfrom(socket_fd,&data ,sizeof(data), 0, (struct sockaddr *) &addr, &addrlen);
     if (nbytes != sizeof(data))
     {
@@ -134,6 +134,6 @@ int get_game_data()
         return -1;
     }
 
-    parse_data_pckt(&data);
+    parse_data_pckt(data);
     return 0;
 }
