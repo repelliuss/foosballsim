@@ -51,7 +51,7 @@ public:
   int next(Data &data) const noexcept {
     int nbytes;
     do {
-      nbytes = recv(socket_fd, data, sizeof(Data), 0);
+      nbytes = recv(socket_fd, &data, sizeof(Data), 0);
       if (nbytes == -1) {
         if (errno == EAGAIN || errno == EWOULDBLOCK) {
           return 1;
