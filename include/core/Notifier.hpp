@@ -23,7 +23,7 @@ public:
 private:
   class Data {
   public:
-    uint_fast16_t raw[6];
+    uint16_t raw[6];
 
     int get_ball_position_x() const noexcept { return raw[0]; }
     int get_ball_position_z() const noexcept { return raw[1]; }
