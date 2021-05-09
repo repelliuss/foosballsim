@@ -3,6 +3,7 @@
 #include <motion/BallMotion.hpp>
 #include <motion/R3Motion.hpp>
 #include <motion/R4Motion.hpp>
+#include <Notifier.hpp>
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
   godot::Godot::gdnative_init(o);
@@ -21,4 +22,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
   godot::register_class<godot::R3Motion>();
   godot::register_class<godot::R4Motion>();
   godot::register_class<godot::B4Motion>();
+  godot::register_class<godot::Notifier>();
 }
