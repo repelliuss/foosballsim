@@ -20,7 +20,7 @@ public:
 private:
   float rotation_speed;
   Input *input;
-  Node *childNode;
+  Spatial *innerGimbal;
 };
 } // namespace godot
 
