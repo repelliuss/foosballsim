@@ -4,19 +4,15 @@
 #include <motion/ArmMotion.hpp>
 
 namespace godot {
-class R3Motion : public ArmMotion<6> {
+class R3Motion : public ArmMotion {
   GODOT_CLASS(R3Motion, ArmMotion)
-
-private:
-  float speed{3.0f};
 
 public:
   static void _register_methods();
 
   R3Motion() noexcept;
 
-  void _init() noexcept;
-  void _process(float delta);
+  void _init();
 };
 } // namespace godot
 

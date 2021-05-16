@@ -2,17 +2,10 @@
 
 using namespace godot;
 
-void R4Motion::_register_methods() {
-  register_method("_process", &R4Motion::_process);
-  register_property<R4Motion, float>("speed", &R4Motion::speed, 1.5);
-}
+void R4Motion::_register_methods() {}
 
-R4Motion::R4Motion() noexcept
-    : ArmMotion({1, 2, 3, 4}, speed, 0.1) {}
+R4Motion::R4Motion() noexcept {}
 
-void R4Motion::_init() noexcept {
+void R4Motion::_init() {
   ArmMotion::_init();
-  speed = 1.5;
 }
-
-void R4Motion::_process(float delta) { ArmMotion::_process(delta); }

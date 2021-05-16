@@ -3,26 +3,19 @@
 using namespace godot;
 
 void BallMotion::_register_methods() {
-  register_method("_process", &BallMotion::_process);
-  register_property<BallMotion, float>("speed", &BallMotion::speed, 3.0);
+  register_method("_ready", &BallMotion::_ready);
+  register_method("update_position", &BallMotion::update_position);
 }
 
-BallMotion::BallMotion() noexcept
-    : dispatcher{{{{{3.4, 4}},
-                  {{-4.985, -16.543}},
-                  {{13.54, 0}},
-                  {{-13.496, 10.402}},
-                  {{-6.861, 16.122}},
-                  {{-0.699, -27.976}}}},
-                 speed, 0.2f} {}
+BallMotion::BallMotion() noexcept {}
 
-void BallMotion::_init() {
-  speed = 3.0;
-  transform = get_transform();
+void BallMotion::_init() { transform = get_transform(); }
+
+void BallMotion::_ready() {
+  get_node(NodePath("../../Table"))
+      ->connect("on_ball_position_changed", this, "update_position");
 }
 
-void BallMotion::_process(float delta) {
-  if (dispatcher.next_pos(transform.origin.x, transform.origin.z, delta)) {
-    set_transform(transform);
-  }
+void BallMotion::update_position(int x, int z) {
+  printf("Ball position updated %d %d\n", x, z);
 }

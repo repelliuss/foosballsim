@@ -3,7 +3,6 @@
 
 #include <Godot.hpp>
 #include <KinematicBody.hpp>
-#include <util/FixedDispatcher2.hpp>
 
 namespace godot {
 class BallMotion : public KinematicBody {
@@ -15,13 +14,12 @@ public:
   BallMotion() noexcept;
 
   void _init();
+  void _ready();
 
-  void _process(float delta);
+  void update_position(int x, int z);
 
 private:
-  float speed;
   Transform transform;
-  util::FixedDispatcher2<6> dispatcher;
 };
 } // namespace godot
 
