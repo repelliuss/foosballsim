@@ -1,3 +1,4 @@
+#include <camera/CameraGimbal.hpp>
 #include <motion/B3Motion.hpp>
 #include <motion/B4Motion.hpp>
 #include <motion/BallMotion.hpp>
@@ -21,4 +22,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
   godot::register_class<godot::R3Motion>();
   godot::register_class<godot::R4Motion>();
   godot::register_class<godot::B4Motion>();
+  godot::register_class<godot::CameraGimbal>();
 }
