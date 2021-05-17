@@ -1,5 +1,4 @@
 #include <Defs.hpp>
-#include <Math.hpp>
 #include <Vector3.hpp>
 #include <camera/CameraGimbal.hpp>
 using namespace godot;
@@ -7,27 +6,45 @@ using namespace godot;
 void CameraGimbal::_register_methods() {
   register_method("_process", &CameraGimbal::_process);
   register_method("get_input_keyboard", &CameraGimbal::get_input_keyboard);
+  register_method("_unhandled_input", &CameraGimbal::_unhandled_input);
   register_property<CameraGimbal, float>("rotation_speed",
                                          &CameraGimbal::rotation_speed, PI / 2);
+  register_property<CameraGimbal, float>("cam_zoom", &CameraGimbal::cam_zoom,
+                                         1);
 }
 
 CameraGimbal::CameraGimbal() noexcept {}
 
 void CameraGimbal::_process(float delta) {
   get_input_keyboard(delta);
-  Vector3 v = innerGimbal->get_rotation();
-  if (v.z < -1) {
-    v.z = -1;
-  }
-  if (v.z > 0.5) {
-    v.z = 0.5;
-  }
-  innerGimbal->set_rotation(v);
+
+  Vector3 v = get_scale();
+  real_t scale = v.x;
+  scale += ZOOM_SPEED * (cam_zoom - scale);
+  v = Vector3(scale, scale, scale);
+  set_scale(v);
 }
 
 void CameraGimbal::_init() {
   input = Input::get_singleton();
   rotation_speed = PI / 2;
+  cam_zoom = 1;
+}
+
+void CameraGimbal::_unhandled_input(InputEvent *event) {
+  if (event->is_action_pressed("cam_zoom_in")) {
+    cam_zoom -= ZOOM_SPEED;
+  }
+  if (event->is_action_pressed("cam_zoom_out")) {
+    cam_zoom += ZOOM_SPEED;
+  }
+
+  if (cam_zoom < MIN_ZOOM) {
+    cam_zoom = MIN_ZOOM;
+  }
+  if (cam_zoom > MAX_ZOOM) {
+    cam_zoom = MAX_ZOOM;
+  }
 }
 
 void CameraGimbal::get_input_keyboard(float delta) {
@@ -53,4 +70,13 @@ void CameraGimbal::get_input_keyboard(float delta) {
   Node *node = get_node("InnerGimbal");
   innerGimbal = Object::cast_to<Spatial>(node);
   innerGimbal->rotate_object_local(v3.FORWARD, x_rot * rotation_speed * delta);
+
+  Vector3 v = innerGimbal->get_rotation();
+  if (v.z < -1) {
+    v.z = -1;
+  }
+  if (v.z > 0.5) {
+    v.z = 0.5;
+  }
+  innerGimbal->set_rotation(v);
 }

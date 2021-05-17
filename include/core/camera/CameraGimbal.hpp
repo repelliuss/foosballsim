@@ -3,9 +3,13 @@
 
 #include <Godot.hpp>
 #include <Input.hpp>
+#include <InputEvent.hpp>
 #include <Spatial.hpp>
 
 #define PI 3.141593
+#define MAX_ZOOM 2.2
+#define MIN_ZOOM 0.7
+#define ZOOM_SPEED 0.09
 
 namespace godot {
 class CameraGimbal : public Spatial {
@@ -16,8 +20,10 @@ public:
   void _init();
   void _process(float delta);
   void get_input_keyboard(float delta);
+  void _unhandled_input(InputEvent *event);
 
 private:
+  float cam_zoom;
   float rotation_speed;
   Input *input;
   Spatial *innerGimbal;
