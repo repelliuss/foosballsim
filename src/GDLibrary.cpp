@@ -1,8 +1,8 @@
-#include <motion/B3Motion.hpp>
-#include <motion/B4Motion.hpp>
+#include <motion/MachineGK.hpp>
+#include <motion/MachineSNT.hpp>
 #include <motion/BallMotion.hpp>
-#include <motion/R3Motion.hpp>
-#include <motion/R4Motion.hpp>
+#include <motion/HumanGK.hpp>
+#include <motion/HumanSNT.hpp>
 #include <Notifier.hpp>
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
@@ -18,9 +18,9 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
   godot::Godot::nativescript_init(handle);
 
   godot::register_class<godot::BallMotion>();
-  godot::register_class<godot::B3Motion>();
-  godot::register_class<godot::R3Motion>();
-  godot::register_class<godot::R4Motion>();
-  godot::register_class<godot::B4Motion>();
+  godot::register_class<godot::MachineGK>();
+  godot::register_class<godot::HumanGK>();
+  godot::register_class<godot::HumanSNT>();
+  godot::register_class<godot::MachineSNT>();
   godot::register_class<godot::Notifier>();
 }
