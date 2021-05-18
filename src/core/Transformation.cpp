@@ -30,19 +30,16 @@
 // original: 240
 // simulation: 1.422
 
-using namespace transform;
-using namespace constant;
-
-constexpr float detail::transform_point(float when_length, float then_point,
-                                        float if_length) {
+constexpr float Transformation::transform_point(float when_length,
+                                                float then_point,
+                                                float if_length) {
   return (if_length * then_point) / when_length;
 }
 
-constexpr float transform_x(float org_x) {
-  return detail::transform_point(org_x_length, org_x, sim_x_length);
+float Transformation::transform_x(float org_x) {
+  return transform_point(org_x_length, org_x, sim_x_length);
 }
 
-constexpr float transform_z(float org_z) {
-  return detail::transform_point(org_z_length - org_z_offset, org_z,
-                                 sim_z_length);
+float Transformation::transform_z(float org_z) {
+  return transform_point(org_z_length - org_z_offset, org_z, sim_z_length);
 }

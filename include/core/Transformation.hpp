@@ -1,24 +1,22 @@
 #ifndef TRANSFORMATION_HPP_
 #define TRANSFORMATION_HPP_
 
-namespace transform {
-namespace constant {
-inline constexpr float org_x_length = 615;
+class Transformation {
+public:
 
-inline constexpr float org_z_length = 435;
-inline constexpr float org_z_offset = 45;
+  static float transform_z(float org_z);
+  static float transform_x(float org_x);
 
-inline constexpr float sim_x_length = 3.644;
-inline constexpr float sim_z_length = 2.321;
-} // namespace constant
+private:
+  inline static constexpr float org_x_length = 615;
 
-namespace detail {
-constexpr float transform_point(float when_length, float then_point,
-                                float if_length);
-}
+  inline static constexpr float org_z_length = 435;
+  inline static constexpr float org_z_offset = 45;
 
-constexpr float transform_z(float org_z);
-constexpr float transform_x(float org_x);
-} // namespace transform
+  inline static constexpr float sim_x_length = 3.644;
+  inline static constexpr float sim_z_length = 2.321;
+
+  static constexpr float transform_point(float when_length, float then_point, float if_length);
+};
 
 #endif // TRANSFORMATION_HPP_
