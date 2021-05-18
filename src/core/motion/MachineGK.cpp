@@ -21,7 +21,6 @@ void MachineGK::_ready() {
 }
 
 void MachineGK::update_position(int pos) noexcept {
-  printf("GK position updated: %d\n", pos);
   transform.origin.z = Transformation::transform_z(pos);
   set_transform(transform);
 }

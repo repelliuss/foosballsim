@@ -21,7 +21,6 @@ void MachineSNT::_ready() {
 }
 
 void MachineSNT::update_position(int pos) noexcept {
-  printf("SNT position updated: %d\n", pos);
   transform.origin.z = Transformation::transform_z(pos);
   set_transform(transform);
 }

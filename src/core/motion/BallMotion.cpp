@@ -18,7 +18,6 @@ void BallMotion::_ready() {
 }
 
 void BallMotion::update_position(int x, int z) {
-  printf("Ball position updated %d %d\n", x, z);
   transform.origin.x = Transformation::transform_x(x);
   transform.origin.z = Transformation::transform_z(z);
   set_transform(transform);
