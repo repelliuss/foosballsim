@@ -104,7 +104,7 @@ void CameraGimbal::get_input_keyboard(float delta) {
   }
   if (input->is_action_pressed("select_cam_3")) {
     current = false;
-    node = get_node("../Table/BallMotion/BallCam");
+    node = get_node("../Table/Origin/BallMotion/BallCam");
     cam = Object::cast_to<Camera>(node);
     cam->set_current(true);
   }
