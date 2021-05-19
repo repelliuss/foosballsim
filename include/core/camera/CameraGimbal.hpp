@@ -23,6 +23,7 @@ public:
   void _unhandled_input(InputEvent *event);
 
 private:
+  bool current;
   float cam_zoom;
   float rotation_speed;
   Input *input;
