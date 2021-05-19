@@ -18,10 +18,6 @@ config/name="foosim"
 run/main_scene="res://scene/main.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/vsync/use_vsync=false
-
 [global]
 
 fps=true
