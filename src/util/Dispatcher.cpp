@@ -3,8 +3,11 @@
 using namespace util;
 
 void Dispatcher::add(float x) {
+  if (passed_time == 0.001) {
+    return;
+  }
   positions.push({x, passed_time});
-  passed_time = 0.01;
+  passed_time = 0.001;
 }
 
 bool Dispatcher::next_pos(float &next, float deltatime) {
@@ -26,9 +29,12 @@ bool Dispatcher::next_pos(float &next, float deltatime) {
 
   float cur_deltapos = current->pos - next;
 
-  if (fabs(cur_deltapos) < epsilon) {
+  if (is_positive(cur_deltapos) != is_positive(last_deltapos) ||
+      fabs(cur_deltapos) < epsilon) {
     current = nullptr;
   }
 
   return true;
 }
+
+bool Dispatcher::is_positive(float num) { return num > 0; }

@@ -137,7 +137,7 @@ int main(int argc, char *argv[]) {
     ++i;
 
     // 2 hz frequency.
-    usleep(500000 / 4);
+    usleep(500000 / 2);
   }
 
   return 0;

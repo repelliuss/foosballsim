@@ -22,12 +22,13 @@ private:
   };
 
   queue<PositionInfo> positions;
-  float passed_time = 0.01;
+  float passed_time = 0.001;
   float last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 1;
+  static constexpr float epsilon = 0.005;
 
   void advance(float time) { passed_time += time; }
+  bool is_positive(float num);
 };
 } // namespace util
 
