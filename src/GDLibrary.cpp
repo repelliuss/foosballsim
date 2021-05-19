@@ -1,5 +1,6 @@
 #include <motion/MachineGK.hpp>
 #include <motion/MachineSNT.hpp>
+#include <camera/CameraGimbal.hpp>
 #include <motion/BallMotion.hpp>
 #include <motion/HumanGK.hpp>
 #include <motion/HumanSNT.hpp>
@@ -23,4 +24,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
   godot::register_class<godot::HumanSNT>();
   godot::register_class<godot::MachineSNT>();
   godot::register_class<godot::Notifier>();
+  godot::register_class<godot::CameraGimbal>();
 }
