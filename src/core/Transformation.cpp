@@ -1,5 +1,5 @@
 #include <Transformation.hpp>
-#include <stdio.h>
+#include <Constants.hpp>
 
 // simulation
 // ==========
@@ -32,8 +32,11 @@
 // original: 240
 // simulation: 1.4439024390243902
 
-float Transformation::transform_point(float when_length, float then_point,
-                                      float if_length) {
+using namespace constants::dimensions;
+
+constexpr float Transformation::transform_point(float when_length,
+                                                float then_point,
+                                                float if_length) {
   return (if_length * then_point) / when_length;
 }
 
