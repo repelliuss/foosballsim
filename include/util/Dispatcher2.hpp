@@ -27,7 +27,7 @@ private:
   float passed_time = 0.01;
   godot::Vector2 last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.5;
+  static constexpr float epsilon = 1;
 
   void advance(float time) { passed_time += time; }
 };
