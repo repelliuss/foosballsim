@@ -1,38 +1,39 @@
 #include <Transformation.hpp>
+#include <stdio.h>
 
 // simulation
 // ==========
-// 2.321 Z axis length
-// 3.644 X axis length
+// 2.349 Z axis length
+// 3.7 X axis length
 
 // original
 // =========
-// 390 Z axis length
+// 435 Z axis length
+// 45 Z axis offset
 // 615 X axis length
 
-// simulation rate: 1.5700129254631623
 // original rate: 1.5769230769230769
-// error % percent:  0.44388078630310057
+// simulation rate: 1.575138356747552
+// error % percent:  0.11319512747294241
 
 // Machine GK - X pos
 // original: 55
-// simulation: 0.326
+// simulation: 0.3308943089430894
 
 // Human GK - X pos
 // original: 560
-// simulation: 3.318
+// simulation: 3.3691056910569106
 
 // Machine SNT - X pos
 // original: 375
-// simulation: 2.222
+// simulation: 2.2560975609756095
 
 // Human SNT - X pos
 // original: 240
-// simulation: 1.422
+// simulation: 1.4439024390243902
 
-constexpr float Transformation::transform_point(float when_length,
-                                                float then_point,
-                                                float if_length) {
+float Transformation::transform_point(float when_length, float then_point,
+                                      float if_length) {
   return (if_length * then_point) / when_length;
 }
 

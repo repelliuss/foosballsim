@@ -13,10 +13,10 @@ private:
   inline static constexpr float org_z_length = 435;
   inline static constexpr float org_z_offset = 45;
 
-  inline static constexpr float sim_x_length = 3.644;
-  inline static constexpr float sim_z_length = 2.321;
+  inline static constexpr float sim_x_length = 3.7;
+  inline static constexpr float sim_z_length = 2.349;
 
-  static constexpr float transform_point(float when_length, float then_point, float if_length);
+  static float transform_point(float when_length, float then_point, float if_length);
 };
 
 #endif // TRANSFORMATION_HPP_
