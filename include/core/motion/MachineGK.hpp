@@ -2,6 +2,7 @@
 #define MACHINE_GK_HPP_
 
 #include <motion/ArmMotion.hpp>
+#include <util/Dispatcher.hpp>
 
 namespace godot {
 class MachineGK : public ArmMotion {
@@ -14,11 +15,13 @@ public:
 
   void _init();
   void _ready();
+  void _physics_process(float deltatime);
 
-  void update_position(int pos) noexcept;
+  void on_new_position(int pos) noexcept;
 
 private:
   Transform transform;
+  util::Dispatcher dispatcher;
 };
 } // namespace godot
 

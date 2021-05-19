@@ -1,11 +1,12 @@
-#include <motion/BallMotion.hpp>
 #include <Transformation.hpp>
+#include <motion/BallMotion.hpp>
 
 using namespace godot;
 
 void BallMotion::_register_methods() {
   register_method("_ready", &BallMotion::_ready);
-  register_method("update_position", &BallMotion::update_position);
+  register_method("_physics_process", &BallMotion::_physics_process);
+  register_method("on_new_position", &BallMotion::on_new_position);
 }
 
 BallMotion::BallMotion() noexcept {}
@@ -14,11 +15,16 @@ void BallMotion::_init() { transform = get_transform(); }
 
 void BallMotion::_ready() {
   get_node(NodePath("../../../Table"))
-      ->connect("on_ball_position_changed", this, "update_position");
+      ->connect("on_ball_position_changed", this, "on_new_position");
 }
 
-void BallMotion::update_position(int x, int z) {
-  transform.origin.x = Transformation::transform_x(x);
-  transform.origin.z = Transformation::transform_z(z);
-  set_transform(transform);
+void BallMotion::on_new_position(int x, int z) { dispatcher.add(x, z); }
+
+void BallMotion::_physics_process(float deltatime) {
+  Transform transformed = transform;
+  if(dispatcher.next_pos(transform.origin.x, transform.origin.z, deltatime)) {
+    transformed.origin.x = Transformation::transform_x(transform.origin.x);
+    transformed.origin.z = Transformation::transform_z(transform.origin.z);
+    set_transform(transformed);
+  }
 }
