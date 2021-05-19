@@ -5,7 +5,7 @@ using namespace godot;
 
 void BallMotion::_register_methods() {
   register_method("_ready", &BallMotion::_ready);
-  register_method("_physics_process", &BallMotion::_physics_process);
+  register_method("_process", &BallMotion::_process);
   register_method("on_new_position", &BallMotion::on_new_position);
 }
 
@@ -23,7 +23,7 @@ void BallMotion::on_new_position(int x, int z) {
                  Transformation::transform_z(z));
 }
 
-void BallMotion::_physics_process(float deltatime) {
+void BallMotion::_process(float deltatime) {
   if (dispatcher.next_pos(transform.origin.x, transform.origin.z, deltatime)) {
     set_transform(transform);
   }

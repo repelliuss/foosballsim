@@ -15,7 +15,7 @@ public:
 
   void _init();
   void _ready();
-  void _physics_process(float deltatime);
+  void _process(float deltatime);
 
   void on_new_position(int pos) noexcept;
 
