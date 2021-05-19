@@ -4,7 +4,7 @@ using namespace util;
 
 void Dispatcher2::add(float x, float y) {
   positions.push({{x, y}, passed_time});
-  passed_time = 0;
+  passed_time = 0.01;
 }
 
 bool Dispatcher2::next_pos(float &next1, float &next2, float deltatime) {

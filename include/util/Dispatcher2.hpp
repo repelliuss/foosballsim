@@ -24,7 +24,7 @@ private:
   };
 
   queue<PositionInfo> positions;
-  float passed_time;
+  float passed_time = 0.01;
   godot::Vector2 last_deltapos;
   PositionInfo *current = nullptr;
   static constexpr float epsilon = 0.5;

@@ -21,12 +21,12 @@ void MachineSNT::_ready() {
       ->connect("on_arm_snt_position_changed", this, "on_new_position");
 }
 
-void MachineSNT::on_new_position(int pos) noexcept { dispatcher.add(pos); }
+void MachineSNT::on_new_position(int pos) noexcept {
+  dispatcher.add(Transformation::transform_z(pos));
+}
 
 void MachineSNT::_physics_process(float deltatime) {
-  Transform transformed = transform;
-  if(dispatcher.next_pos(transform.origin.z, deltatime)) {
-    transformed.origin.z = Transformation::transform_z(transform.origin.z);
-    set_transform(transformed);
+  if (dispatcher.next_pos(transform.origin.z, deltatime)) {
+    set_transform(transform);
   }
 }

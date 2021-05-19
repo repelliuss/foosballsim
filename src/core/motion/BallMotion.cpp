@@ -18,13 +18,13 @@ void BallMotion::_ready() {
       ->connect("on_ball_position_changed", this, "on_new_position");
 }
 
-void BallMotion::on_new_position(int x, int z) { dispatcher.add(x, z); }
+void BallMotion::on_new_position(int x, int z) {
+  dispatcher.add(Transformation::transform_x(x),
+                 Transformation::transform_z(z));
+}
 
 void BallMotion::_physics_process(float deltatime) {
-  Transform transformed = transform;
-  if(dispatcher.next_pos(transform.origin.x, transform.origin.z, deltatime)) {
-    transformed.origin.x = Transformation::transform_x(transform.origin.x);
-    transformed.origin.z = Transformation::transform_z(transform.origin.z);
-    set_transform(transformed);
+  if (dispatcher.next_pos(transform.origin.x, transform.origin.z, deltatime)) {
+    set_transform(transform);
   }
 }

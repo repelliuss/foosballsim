@@ -21,12 +21,12 @@ void MachineGK::_ready() {
       ->connect("on_arm_gk_position_changed", this, "on_new_position");
 }
 
-void MachineGK::on_new_position(int pos) noexcept { dispatcher.add(pos); }
+void MachineGK::on_new_position(int pos) noexcept {
+  dispatcher.add(Transformation::transform_z(pos));
+}
 
 void MachineGK::_physics_process(float deltatime) {
-  Transform transformed = transform;
   if (dispatcher.next_pos(transform.origin.z, deltatime)) {
-    transformed.origin.z = Transformation::transform_z(transform.origin.z);
-    set_transform(transformed);
+    set_transform(transform);
   }
 }

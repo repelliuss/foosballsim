@@ -22,7 +22,7 @@ private:
   };
 
   queue<PositionInfo> positions;
-  float passed_time;
+  float passed_time = 0.01;
   float last_deltapos;
   PositionInfo *current = nullptr;
   static constexpr float epsilon = 0.5;
