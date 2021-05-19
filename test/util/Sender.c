@@ -36,7 +36,7 @@ mock_info_t get_mock_info(mock_game_t game) {
   switch (game) {
   case MOCK_ONE:
     strcpy(info.path, "../data/mock-game1");
-    info.size = 1646;
+    info.size = 1620;
     break;
   default:
     fprintf(stderr, "Back mock_game_t\n");
