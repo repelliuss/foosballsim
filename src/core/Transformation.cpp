@@ -41,5 +41,6 @@ float Transformation::transform_x(float org_x) {
 }
 
 float Transformation::transform_z(float org_z) {
-  return transform_point(org_z_length - org_z_offset, org_z, sim_z_length);
+  return transform_point(org_z_length - org_z_offset, org_z - org_z_offset,
+                         sim_z_length);
 }
