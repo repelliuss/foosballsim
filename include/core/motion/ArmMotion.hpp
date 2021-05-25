@@ -12,7 +12,7 @@ public:
 
   void _init();
 
-private:
+protected:
   Transform transform;
 };
 } // namespace godot

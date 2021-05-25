@@ -11,7 +11,7 @@ godot_headers_path = cpp_bindings_path + "godot-headers/"
 cpp_library = "libgodot-cpp.linux"
 
 # Add C++ flags
-env.Append(CXXFLAGS=["-fPIC", "-std=c++17"])
+env.Append(CXXFLAGS=["-fPIC", "-std=c++11"])
 
 # Configurations that depends on target type
 if env["target"] in ("debug", "d"):

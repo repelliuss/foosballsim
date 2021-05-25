@@ -13,7 +13,6 @@ MachineGK::MachineGK() noexcept {}
 
 void MachineGK::_init() {
   ArmMotion::_init();
-  transform = get_transform();
 }
 
 void MachineGK::_ready() {

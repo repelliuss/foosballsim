@@ -20,7 +20,6 @@ public:
   void on_new_position(int pos) noexcept;
 
 private:
-  Transform transform;
   util::Dispatcher dispatcher;
 };
 } // namespace godot

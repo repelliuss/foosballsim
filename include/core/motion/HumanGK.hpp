@@ -2,6 +2,7 @@
 #define HUMAN_GK_HPP_
 
 #include <motion/ArmMotion.hpp>
+#include <util/Dispatcher.hpp>
 
 namespace godot {
 class HumanGK : public ArmMotion {
@@ -13,6 +14,13 @@ public:
   HumanGK() noexcept;
 
   void _init();
+  void _ready();
+  void _process(float deltatime);
+
+  void on_new_position(int pos) noexcept;
+
+private:
+  util::Dispatcher dispatcher;
 };
 } // namespace godot
 
