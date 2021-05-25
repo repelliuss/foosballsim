@@ -24,17 +24,17 @@ private:
   };
 
   queue<PositionInfo> positions;
-  float passed_time = 0.001;
+  float passed_time = 0.01;
   bool done_x, done_y;
   godot::Vector2 last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.005;
+  static constexpr float epsilon = 0.15;
 
   /* FIXME: reset when passed_time is too big */
   void advance(float time) {
     passed_time += time;
-    if(passed_time >= 1) {
-      passed_time = 0.001;
+    if(passed_time >= 4) {
+      passed_time = 0.01;
     }
   }
   bool is_positive(float num);

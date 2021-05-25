@@ -3,11 +3,11 @@
 using namespace util;
 
 void Dispatcher::add(float x) {
-  if (passed_time == 0.001) {
+  if (passed_time == 0.01) {
     return;
   }
   positions.push({x, passed_time});
-  passed_time = 0.001;
+  passed_time = 0.01;
 }
 
 bool Dispatcher::next_pos(float &next, float deltatime) {

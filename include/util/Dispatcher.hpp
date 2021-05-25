@@ -22,15 +22,15 @@ private:
   };
 
   queue<PositionInfo> positions;
-  float passed_time = 0.001;
+  float passed_time = 0.01;
   float last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.005;
+  static constexpr float epsilon = 0.15;
 
   void advance(float time) {
     passed_time += time;
-    if (passed_time >= 1) {
-      passed_time = 0.001;
+    if (passed_time >= 4) {
+      passed_time = 0.01;
     }
   }
   bool is_positive(float num);
