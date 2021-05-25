@@ -27,7 +27,12 @@ private:
   PositionInfo *current = nullptr;
   static constexpr float epsilon = 0.005;
 
-  void advance(float time) { passed_time += time; }
+  void advance(float time) {
+    passed_time += time;
+    if (passed_time >= 1) {
+      passed_time = 0.001;
+    }
+  }
   bool is_positive(float num);
 };
 } // namespace util

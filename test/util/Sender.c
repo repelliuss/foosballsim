@@ -124,8 +124,6 @@ int main(int argc, char *argv[]) {
   packet_t *packets = make_data(game);
   int i = 0;
 
-  while (i < info.size) {
-    // Dummy data olustur.
     uint16_t raw_data[6];
     create_raw_data(raw_data, packets + i);
     int nbytes = sendto(fd, &raw_data, sizeof(raw_data), 0,
@@ -137,7 +135,7 @@ int main(int argc, char *argv[]) {
     ++i;
 
     // 2 hz frequency.
-    usleep(500000 / 2);
+    usleep(500000 / 3);
   }
 
   return 0;
