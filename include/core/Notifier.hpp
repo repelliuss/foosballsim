@@ -23,14 +23,16 @@ public:
 private:
   class Data {
   public:
-    uint16_t raw[6];
+    uint16_t raw[8];
 
     int get_ball_position_x() const noexcept { return raw[0]; }
     int get_ball_position_z() const noexcept { return raw[1]; }
     int get_arm_snt_position() const noexcept { return raw[2]; }
     int get_arm_gk_position() const noexcept { return raw[3]; }
-    int get_score_human() const noexcept { return raw[4]; }
-    int get_score_robot() const noexcept { return raw[5]; }
+    int get_human_gk_position() const noexcept { return raw[4]; }
+    int get_human_snt_position() const noexcept { return raw[5]; }
+    int get_score_human() const noexcept { return raw[6]; }
+    int get_score_robot() const noexcept { return raw[7]; }
   };
 
   Data data;
