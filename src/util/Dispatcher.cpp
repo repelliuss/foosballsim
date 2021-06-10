@@ -13,6 +13,7 @@ void Dispatcher::add(float x) {
 bool Dispatcher::next_pos(float &next, float deltatime) {
 
   advance(deltatime);
+  timeout += deltatime;
 
   if (current == nullptr && positions.empty()) {
     return false;
@@ -21,8 +22,14 @@ bool Dispatcher::next_pos(float &next, float deltatime) {
   if (current == nullptr && !positions.empty()) {
     current = &positions.front();
     last_deltapos = current->pos - next;
+    timeout = 0.0;
 
     positions.pop();
+  }
+
+  if (current->deltatime == 0.0 || timeout >= current->deltatime) {
+    current = nullptr;
+    return false;
   }
 
   next += (last_deltapos * deltatime) / current->deltatime;

@@ -14,6 +14,7 @@ void Dispatcher2::add(float x, float y) {
 bool Dispatcher2::next_pos(float &next1, float &next2, float deltatime) {
 
   advance(deltatime);
+  timeout += deltatime;
 
   if (current == nullptr && positions.empty()) {
     return false;
@@ -26,7 +27,14 @@ bool Dispatcher2::next_pos(float &next1, float &next2, float deltatime) {
 
     done_x = done_y = false;
 
+    timeout = 0.0;
+
     positions.pop();
+  }
+
+  if (current->deltatime == 0.0 || timeout >= current->deltatime) {
+    current = nullptr;
+    return false;
   }
 
   if (!done_x)

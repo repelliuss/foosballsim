@@ -20,21 +20,22 @@ private:
     godot::Vector2 pos;
     float deltatime;
 
-    inline PositionInfo(godot::Vector2 p, float t) : pos{p}, deltatime{t} {}
+    PositionInfo(godot::Vector2 p, float t) : pos{p}, deltatime{t} {}
   };
 
   queue<PositionInfo> positions;
   float passed_time = 0.01;
+  float timeout = 0.0;
   bool done_x, done_y;
   godot::Vector2 last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.15;
+  static constexpr float epsilon = 0.20;
 
   /* FIXME: reset when passed_time is too big */
   void advance(float time) {
     passed_time += time;
-    if(passed_time >= 4) {
-      passed_time = 0.01;
+    if(passed_time >= 3) {
+      passed_time = 0.3;
     }
   }
   bool is_positive(float num);

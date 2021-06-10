@@ -18,19 +18,20 @@ private:
     float pos;
     float deltatime;
 
-    inline PositionInfo(float p, float t) : pos{p}, deltatime{t} {}
+    PositionInfo(float p, float t) : pos{p}, deltatime{t} {}
   };
 
   queue<PositionInfo> positions;
   float passed_time = 0.01;
+  float timeout = 0.0;
   float last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.15;
+  static constexpr float epsilon = 0.20;
 
   void advance(float time) {
     passed_time += time;
-    if (passed_time >= 4) {
-      passed_time = 0.01;
+    if (passed_time >= 3) {
+      passed_time = 0.3;
     }
   }
   bool is_positive(float num);
