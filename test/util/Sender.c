@@ -23,6 +23,8 @@ typedef struct packet {
   uint16_t ball_position_y;
   uint16_t arm_snt_position;
   uint16_t arm_gk_position;
+  uint16_t human_gk_position;
+  uint16_t human_snt_position;
   uint16_t score_human;
   uint16_t score_robot;
 } packet_t;
@@ -124,7 +126,9 @@ int main(int argc, char *argv[]) {
   packet_t *packets = make_data(game);
   int i = 0;
 
-    uint16_t raw_data[6];
+  while (i < info.size) {
+    // Dummy data olustur.
+    uint16_t raw_data[8];
     create_raw_data(raw_data, packets + i);
     int nbytes = sendto(fd, &raw_data, sizeof(raw_data), 0,
                         (struct sockaddr *)&addr, sizeof(addr));
@@ -133,6 +137,7 @@ int main(int argc, char *argv[]) {
       return 1;
     }
     ++i;
+
 
     // 2 hz frequency.
     usleep(500000 / 3);
@@ -146,6 +151,8 @@ void create_raw_data(uint16_t *raw_data, packet_t *packet) {
   raw_data[1] = packet->ball_position_y;
   raw_data[2] = packet->arm_snt_position;
   raw_data[3] = packet->arm_gk_position;
-  raw_data[4] = packet->score_human;
-  raw_data[5] = packet->score_robot;
+  raw_data[4] = packet->human_gk_position;
+  raw_data[5] = packet->human_snt_position;
+  raw_data[6] = packet->score_human;
+  raw_data[7] = packet->score_robot;
 }
