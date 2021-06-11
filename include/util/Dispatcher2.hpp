@@ -29,7 +29,9 @@ private:
   bool done_x, done_y;
   godot::Vector2 last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.20;
+  int skipped_data = 0;
+  static constexpr float epsilon = 0.05;
+  static constexpr int data_interval = 0;
 
   /* FIXME: reset when passed_time is too big */
   void advance(float time) {

@@ -4,11 +4,18 @@
 using namespace util;
 
 void Dispatcher2::add(float x, float y) {
-  if (passed_time == 0.01) {
-    return;
+  if (skipped_data > data_interval) {
+    skipped_data = 0;
+    if (passed_time == 0.01) {
+      return;
+    }
+    positions.push({{x, y}, passed_time});
+    printf("%f\n", passed_time);
+    passed_time = 0.01;
   }
-  positions.push({{x, y}, passed_time});
-  passed_time = 0.01;
+  else {
+    ++skipped_data;
+  }
 }
 
 bool Dispatcher2::next_pos(float &next1, float &next2, float deltatime) {
