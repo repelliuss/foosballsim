@@ -66,9 +66,9 @@ int Notifier::Data::get_arm_snt_position() const noexcept { return raw[2]; }
 
 int Notifier::Data::get_arm_gk_position() const noexcept { return raw[3]; }
 
-int Notifier::Data::get_human_gk_position() const noexcept { return raw[4]; }
+int Notifier::Data::get_human_gk_position() const noexcept { return raw[5]; }
 
-int Notifier::Data::get_human_snt_position() const noexcept { return raw[5]; }
+int Notifier::Data::get_human_snt_position() const noexcept { return raw[4]; }
 
 int Notifier::Data::get_score_human() const noexcept { return raw[6]; }
 
