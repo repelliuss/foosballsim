@@ -3,7 +3,7 @@
 
 #include <Godot.hpp>
 #include <KinematicBody.hpp>
-#include <util/Dispatcher2.hpp>
+#include <util/RunningAverage2.hpp>
 
 namespace godot {
 class BallMotion : public KinematicBody {
@@ -22,7 +22,7 @@ public:
 
 private:
   Transform transform;
-  util::Dispatcher2 dispatcher;
+  util::RunningAverage2 ravg;
 };
 } // namespace godot
 

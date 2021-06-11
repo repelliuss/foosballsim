@@ -16,7 +16,7 @@ void RunningAverage::add(float x) {
 
 bool RunningAverage::next_pos(float &next, float deltatime) {
 
-    next = sum / cap;
+    next = sum / data.size();
 
     return true;
 }

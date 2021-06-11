@@ -2,7 +2,7 @@
 #define MACHINE_GK_HPP_
 
 #include <motion/ArmMotion.hpp>
-#include <util/Dispatcher.hpp>
+#include <util/RunningAverage.hpp>
 
 namespace godot {
 class MachineGK : public ArmMotion {
@@ -20,7 +20,7 @@ public:
   void on_new_position(int pos) noexcept;
 
 private:
-  util::Dispatcher dispatcher;
+  util::RunningAverage ravg;
 };
 } // namespace godot
 

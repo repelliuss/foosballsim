@@ -1,3 +1,4 @@
+#include <Constants.hpp>
 #include <Transformation.hpp>
 #include <motion/MachineSNT.hpp>
 
@@ -9,24 +10,22 @@ void MachineSNT::_register_methods() {
   register_method("on_new_position", &MachineSNT::on_new_position);
 }
 
-MachineSNT::MachineSNT() noexcept {}
+MachineSNT::MachineSNT() noexcept : ravg{constants::default_run_avg_cap} {}
 
-void MachineSNT::_init() {
-  ArmMotion::_init();
-  transform = get_transform();
-}
+void MachineSNT::_init() { ArmMotion::_init(); }
 
 void MachineSNT::_ready() {
   get_node(NodePath("../../../Table"))
       ->connect("on_arm_snt_position_changed", this, "on_new_position");
+  ravg.add(transform.origin.z);
 }
 
 void MachineSNT::on_new_position(int pos) noexcept {
-  dispatcher.add(Transformation::transform_z(pos));
+  ravg.add(Transformation::transform_z(pos));
 }
 
 void MachineSNT::_process(float deltatime) {
-  if (dispatcher.next_pos(transform.origin.z, deltatime)) {
+  if (ravg.next_pos(transform.origin.z, deltatime)) {
     set_transform(transform);
   }
 }

@@ -20,8 +20,8 @@ void RunningAverage2::add(float x, float y) {
 
 bool RunningAverage2::next_pos(float &next1, float &next2, float deltatime) {
 
-    next1 = sum_x / cap;
-    next2 = sum_y / cap;
+    next1 = sum_x / data_x.size();
+    next2 = sum_y / data_y.size();
 
     return true;
 }
