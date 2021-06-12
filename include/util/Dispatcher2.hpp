@@ -36,8 +36,8 @@ private:
   /* FIXME: reset when passed_time is too big */
   void advance(float time) {
     passed_time += time;
-    if(passed_time >= 3) {
-      passed_time = 0.3;
+    if(passed_time >= 2) {
+      passed_time = 0.05;
     }
   }
   bool is_positive(float num);

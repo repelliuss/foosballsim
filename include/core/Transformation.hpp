@@ -6,6 +6,7 @@ public:
 
   static float transform_z(float org_z);
   static float transform_x(float org_x);
+  static float transform_arm_z(float org_z);
 
 private:
   static constexpr float transform_point(float when_length, float then_point, float if_length);

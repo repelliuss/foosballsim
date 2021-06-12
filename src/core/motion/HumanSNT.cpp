@@ -5,7 +5,7 @@ using namespace godot;
 
 void HumanSNT::_register_methods() {
   register_method("_ready", &HumanSNT::_ready);
-  register_method("_process", &HumanSNT::_process);
+  register_method("_process", &HumanSNT::_physics_process);
   register_method("on_new_position", &HumanSNT::on_new_position);
 }
 
@@ -19,10 +19,10 @@ void HumanSNT::_ready() {
 }
 
 void HumanSNT::on_new_position(int pos) noexcept {
-  dispatcher.add(Transformation::transform_z(pos));
+  dispatcher.add(Transformation::transform_arm_z(pos));
 }
 
-void HumanSNT::_process(float deltatime) {
+void HumanSNT::_physics_process(float deltatime) {
   if (dispatcher.next_pos(transform.origin.z, deltatime)) {
     set_transform(transform);
   }

@@ -1,19 +1,29 @@
+#include <Constants.hpp>
 #include <cstdio>
 #include <util/Dispatcher2.hpp>
 
 using namespace util;
 
-void Dispatcher2::add(float x, float y) {
+void Dispatcher2::add(float x, float z) {
   if (skipped_data > data_interval) {
     skipped_data = 0;
     if (passed_time == 0.01) {
       return;
     }
-    positions.push({{x, y}, passed_time});
-    printf("%f\n", passed_time);
+    if (x > constants::dimensions::sim_x_length) {
+      x = constants::dimensions::sim_x_length;
+    } else if (x < 0) {
+      x = 0;
+    }
+    if (z > constants::dimensions::sim_z_length) {
+      z = constants::dimensions::sim_z_length;
+    } else if (z < 0) {
+      z = 0;
+    }
+    passed_time -= passed_time / 3;
+    positions.push({{x, z}, passed_time});
     passed_time = 0.01;
-  }
-  else {
+  } else {
     ++skipped_data;
   }
 }

@@ -5,7 +5,7 @@ using namespace godot;
 
 void MachineSNT::_register_methods() {
   register_method("_ready", &MachineSNT::_ready);
-  register_method("_process", &MachineSNT::_process);
+  register_method("_process", &MachineSNT::_physics_process);
   register_method("on_new_position", &MachineSNT::on_new_position);
 }
 
@@ -22,10 +22,10 @@ void MachineSNT::_ready() {
 }
 
 void MachineSNT::on_new_position(int pos) noexcept {
-  dispatcher.add(Transformation::transform_z(pos));
+  dispatcher.add(Transformation::transform_arm_z(pos));
 }
 
-void MachineSNT::_process(float deltatime) {
+void MachineSNT::_physics_process(float deltatime) {
   if (dispatcher.next_pos(transform.origin.z, deltatime)) {
     set_transform(transform);
   }

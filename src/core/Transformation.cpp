@@ -1,5 +1,5 @@
-#include <Transformation.hpp>
 #include <Constants.hpp>
+#include <Transformation.hpp>
 
 // simulation
 // ==========
@@ -47,4 +47,10 @@ float Transformation::transform_x(float org_x) {
 float Transformation::transform_z(float org_z) {
   return transform_point(org_z_length - org_z_offset, org_z - org_z_offset,
                          sim_z_length);
+}
+
+float Transformation::transform_arm_z(float org_z) {
+  return transform_point(org_z_arm_max - org_z_arm_min, org_z - org_z_arm_min,
+                         sim_arm_z_max - sim_arm_z_min) +
+         sim_arm_z_min;
 }

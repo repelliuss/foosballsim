@@ -26,12 +26,12 @@ private:
   float timeout = 0.0;
   float last_deltapos;
   PositionInfo *current = nullptr;
-  static constexpr float epsilon = 0.20;
+  static constexpr float epsilon = 0.05;
 
   void advance(float time) {
     passed_time += time;
-    if (passed_time >= 3) {
-      passed_time = 0.3;
+    if (passed_time >= 2) {
+      passed_time = 0.05;
     }
   }
   bool is_positive(float num);

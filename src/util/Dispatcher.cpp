@@ -1,3 +1,4 @@
+#include <Constants.hpp>
 #include <util/Dispatcher.hpp>
 
 using namespace util;
@@ -6,6 +7,12 @@ void Dispatcher::add(float x) {
   if (passed_time == 0.01) {
     return;
   }
+  if (x > constants::dimensions::sim_arm_z_max) {
+    x = constants::dimensions::sim_arm_z_max;
+  } else if (x < constants::dimensions::sim_arm_z_min) {
+    x = constants::dimensions::sim_arm_z_min;
+  }
+  // passed_time -= passed_time / 2;
   positions.push({x, passed_time});
   passed_time = 0.01;
 }
