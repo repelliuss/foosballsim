@@ -7,6 +7,10 @@
 - [[#project-structure][Project structure]]
 - [[#cleaning][Cleaning]]
 
+* Video
+
+Watch a simple illustration [[https://youtu.be/Ne8JbVwM87M][here]].
+
 * Requirements
 - Godot v3.2.3-stable
 - Scons
