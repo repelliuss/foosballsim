@@ -1,3 +1,8 @@
+#+html:<p align="center"><i>A real-time foosball simulation using Godot engine</i></p>
+
+#+html:<p align="center" style="font-size:36px;"><img src="https://github.com/repelliuss/.github/blob/3db8bb404bbd08e1ba018ed8980aa61613b6b9f6/foosballsim/demo.gif"/></p>
+
+
 * Table of Contents :toc:
 - [[#requirements][Requirements]]
 - [[#build-steps][Build Steps]]
@@ -6,10 +11,6 @@
   - [[#compiling-the-plugin][Compiling the plugin]]
 - [[#project-structure][Project structure]]
 - [[#cleaning][Cleaning]]
-
-* Video
-
-Watch a simple illustration [[https://youtu.be/Ne8JbVwM87M][here]].
 
 * Requirements
 - Godot v3.2.3-stable
